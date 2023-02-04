@@ -1,4 +1,5 @@
 const calculator = document.querySelector(".calculator");
+const display = document.querySelector(".display");
 const keys = document.querySelector(".keys");
 
 
@@ -6,7 +7,15 @@ keys.addEventListener('click',e=>{
     if(e.target.matches('button')){
         const key = e.target;
         const action = key.dataset.action;
+        const keyContent = key.textContent;
+        const displayNum = display.textContent;
+        
         if(!action){
+            if(displayNum==="0"){
+                display.textContent=keyContent;
+            }else{
+                display.textContent=displayNum+keyContent;
+            }
             console.log("number key!");
         }
         if(
@@ -15,10 +24,10 @@ keys.addEventListener('click',e=>{
             action ==="multiply"||
             action ==="divide"
             ){
-                console.log('operator key!');
+                key.classList.add("is-depressed");
             }
         if(action ==="decimal"){
-            console.log("decimal key!");
+            display.textContent = displayNum +'.';
         }
         if(action ==="clear"){
             console.log("clear key!");
@@ -26,8 +35,10 @@ keys.addEventListener('click',e=>{
         if(action ==="equal"){
             console.log("equal key!");
         }
+        
 
 
 
     }
 })
+
