@@ -35,6 +35,8 @@ keys.addEventListener('click',e=>{
         if(action ==="equal"){
             console.log("equal key!");
         }
+
+        Array.from(key.parentNode.children).forEach(k=>k.classList.remove('is-depressed'));
         
 
 
